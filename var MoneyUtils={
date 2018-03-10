@@ -1,0 +1,29 @@
+var MoneyUtils={
+     this.parse=function(money){
+          var data=0;
+          var dotCount=0; //小数点个数
+          var floatCount=0; //小数点后数据位数
+          if(money==null)return -1;
+          int size=money.length();
+          for(var i=0;i<size;i++){
+           var c=money.charAt(i);
+           if(c>='0'&&c<='9'){
+            if(dotCount>0){
+             floatCount++;
+            }
+            if(floatCount>2)return -1;
+            data=data*10+(c-'0');
+           }
+           else if(c=='.'){
+            dotCount++;
+            if(dotCount>1)return -1;
+           }
+           else{
+            return -1;   }
+          }
+          for(var i=2;i>floatCount;i--){
+           data=data*10;
+          }
+          return data;
+         }
+}
